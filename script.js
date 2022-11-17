@@ -1,28 +1,40 @@
-let slideIndex = 1;
-showSlides(slideIndex);
+//define variables
+var slidePosition=1;
+slideFunction(slidePosition);
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+//controllling forward and back clicks
+function addSlides(n){
+    slideFunction(slidePosition+=n);
 }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+//images
+function currentSlide(n){
+    slideFunction(slidePosition=n);
+
 }
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+
+
+// slideshow function
+
+function slideFunction(n){
+    var i;
+    var Slides=document.getElementsByClassName('ImageContainers');
+    var SmallDots=document.getElementsByClassName('dots');
+    if(n > Slides.length){
+        slidePosition=1
+    }
+    if(n<1){
+        slidePosition==Slides.length
+    }
+    for(i=0;i<Slides.length;i++){
+        Slides[i].style.display='none'
+    }
+    for(i=0;i < SmallDots.length;i++){
+        SmallDots[i].className=SmallDots[i].className.replace('enable',"")
+        
+    }
+    Slides[slidePosition-1].style.display='block';
+    SmallDots[slidePosition-1].className+='enable';
 }
+
